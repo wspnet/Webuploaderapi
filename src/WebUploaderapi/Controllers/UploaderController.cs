@@ -14,9 +14,6 @@ namespace WebUploaderapi.Controllers
         [HttpPost]
         public IActionResult Post(Utils.FileUpload upload)
         {
-            var env = new HostingEnvironment();
-            var savepath = env.WebRootPath;
-
             if (ModelState.IsValid)
             {
                 //upload.Set("")
