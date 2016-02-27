@@ -143,7 +143,7 @@ namespace WebUploaderapi.Utils
                 }
 
                 //文件保存目录
-                var path = "upload";
+                var path = "/Data/qibucms/upload";
                 if (!string.IsNullOrEmpty(SubDir)) path = string.Format("{0}/{1}", path, SubDir);
                 switch (DNType)
                 {
