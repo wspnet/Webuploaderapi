@@ -6,6 +6,7 @@ using Microsoft.Net.Http.Headers;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.PlatformAbstractions;
+using Aliyun.OSS;
 /*
 author:weisp
 website:http://wspnet.cn
@@ -143,7 +144,7 @@ namespace WebUploaderapi.Utils
                 }
 
                 //文件保存目录
-                var path = "/Data/qibucms/upload";
+                var path = "Data/qibucms/upload";
                 if (!string.IsNullOrEmpty(SubDir)) path = string.Format("{0}/{1}", path, SubDir);
                 switch (DNType)
                 {
@@ -177,12 +178,32 @@ namespace WebUploaderapi.Utils
                 savepath = Path.Combine(savepath, TargetFileName);
                 ErrorMessage = savepath;
                 await FromFile.SaveAsAsync(savepath);
+                PutObject("qibucloud", TargetFilePath, savepath);
                 return true;
             }
             catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// 上传指定的文件到指定的OSS的存储空间
+        /// </summary>
+        /// <param name="bucketName">指定的存储空间名称</param>
+        /// <param name="key">文件的在OSS上保存的名称</param>
+        /// <param name="fileToUpload">指定上传文件的本地路径</param>
+        public void PutObject(string bucketName, string key, string fileToUpload)
+        {
+            var client = new OssClient("qibucloud.oss-cn-hangzhou.aliyuncs.com", "2s0GVl7X3BZ3bdkC", "8exMuwi3AkUhSn7ZJDAUWTwZ0T3rvD");
+            try
+            {
+                var result = client.PutObject(bucketName, key, fileToUpload);
+            }
+            catch (Exception es)
+            {
+                //Console.WriteLine("Put object failed, {0}", ex.Message);
             }
         }
 
