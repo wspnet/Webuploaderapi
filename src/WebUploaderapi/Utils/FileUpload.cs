@@ -163,7 +163,7 @@ namespace WebUploaderapi.Utils
                     case 1: TargetFileName = string.Format("{0}{1}", Guid.NewGuid(), sExt); break;
                     case 2:
                         Random r = new Random(Guid.NewGuid().GetHashCode());
-                        TargetFileName = string.Format("{0:yyyyMMddHHmmss}{1}{2}", DateTime.Now, r.Next(1000, 10000), sExt)
+                        TargetFileName = string.Format("{0:yyyyMMddHHmmss}{1}{2}", DateTime.Now, r.Next(1000, 10000), sExt);
                         break;
                     case 3: TargetFileName = string.Format("{0}{1}", DateTime.Now, OriginFileName); break;
                     case 4: TargetFileName = string.Format("{0}{1}", getRandomChar(8), sExt); break;
