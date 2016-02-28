@@ -11,6 +11,10 @@
 
   "frameworks": {
     "net451": {
+      "frameworkAssemblies": {
+        "System.XML": "4.0.0.0",
+        "System.Xml.Serialization": "4.0.0.0"
+      }
     },
     "dotnet5.4": {
       "dependencies": {
