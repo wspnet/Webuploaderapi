@@ -178,7 +178,7 @@ namespace WebUploaderapi.Utils
                 savepath = Path.Combine(savepath, TargetFileName);
                 ErrorMessage = savepath;
                 await FromFile.SaveAsAsync(savepath);
-                var success = OSSHelper.Upload("qibucloud", TargetFilePath, savepath);
+                var success = OSSHelper.Upload("qibucloud", Path.Combine(path, TargetFileName) , savepath);
                 //PutObject("qibucloud", TargetFilePath, savepath);
                 return true;
             }

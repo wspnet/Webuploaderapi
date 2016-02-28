@@ -11,9 +11,9 @@ namespace WebUploaderapi.Utils
 {
     public class OSSHelper
     {
-        public static string accessKeyId = "2s0GVl7X3BZ3bdkC";
-        public static string accessKeySecret = "8exMuwi3AkUhSn7ZJDAUWTwZ0T3rvD";
-        public static string endpoint = "http://qibucloud.oss-cn-hangzhou.aliyuncs.com";
+        public static string accessKeyId = "WSQpWZi9FXH8fQLc";
+        public static string accessKeySecret = "OTlQs6f8nhYizuJIMAWpELIzNCkWwp";
+        public static string endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
 
         static OssClient ossClient = new OssClient(endpoint, accessKeyId, accessKeySecret);
 
@@ -29,15 +29,7 @@ namespace WebUploaderapi.Utils
                         return success;
                     }
                 }
-
-                string eTag;
-                using (var fs = File.Open(fileToUpload, FileMode.Open))
-                {
-                    eTag = OssUtils.ComputeContentMd5(fs, fs.Length);
-                }
-
-                var objectMeta = new ObjectMetadata { ETag = eTag };
-                var result = ossClient.PutObject(bucketName, fileName, fileToUpload, objectMeta);
+                var result = ossClient.PutObject(bucketName, fileName, fileToUpload);
                 success = true;
             }
             catch (Exception ex)
