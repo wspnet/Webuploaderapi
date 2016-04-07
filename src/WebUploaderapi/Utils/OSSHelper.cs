@@ -11,7 +11,7 @@ namespace WebUploaderapi.Utils
 {
     public class OSSHelper
     {
-        public static string accessKeyId = "WSQpWZi9FXH8fQLc";
+        public static string accessKeyId = "wspnet";
         public static string accessKeySecret = "OTlQs6f8nhYizuJIMAWpELIzNCkWwp";
         public static string endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
 
